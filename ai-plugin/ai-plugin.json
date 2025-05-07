@@ -1,0 +1,17 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Herramientas Contables",
+    "name_for_model": "herramientas_contables",
+    "description_for_human": "Busca en Drive hojas de cálculo contables por tipo y usuario.",
+    "description_for_model": "Devuelve link y nombre de archivo según tipo_herramienta, nombre_usuario y apellido_usuario.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://Bernardorrego.github.io/mis-plugins-contables/ai-plugin/openapi.yaml",
+      "is_user_authenticated": false
+    },
+    "contact_email": "data.governance@correo.cl"
+  }
+  
