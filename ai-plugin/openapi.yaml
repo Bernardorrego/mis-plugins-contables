@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: Agente de Herramientas Contables
+  version: "1.0.0"
+  description: Expone tu Web App de Apps Script como un endpoint público (sin auth).
+servers:
+  - url: https://script.google.com/macros/s/AKfycbzBMUVEKSivUVMAZkUZbv-Q1TCgMru7X_YvdiVWGynVQiYNVqsqQLNO7PiU8fGDO4HG/exec
+
+paths:
+  /:
+    post:
+      summary: Buscar herramienta contable por tipo y usuario
+      operationId: buscar_archivo
+      security: []        # fuerza a que no haya autenticación
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tipo_herramienta
+                - nombre_usuario
+                - apellido_usuario
+              properties:
+                tipo_herramienta:
+                  type: string
+                  description: Tipo de herramienta (ej. "Calculadora F29")
+                nombre_usuario:
+                  type: string
+                  description: Nombre del usuario (ej. "Rassel")
+                apellido_usuario:
+                  type: string
+                  description: Apellido del usuario (ej. "Andrade")
+      responses:
+        "200":
+          description: Resultado de la búsqueda
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "FOUND" o "NOT_FOUND"
+                  link:
+                    type: string
+                    nullable: true
+                    description: URL del archivo en Drive
+                  nombreArchivo:
+                    type: string
+                    description: Nombre del archivo o mensaje de error
